@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Static Template</title>
+	<style>
+		.is-loading {
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="root">
+		<task></task>
+		<br>
+		<input type="text" id="input" v-model="message">
+    <p>The input element is {{message}}</p>
+
+    <ul>
+      <li v-for="name in names">{{name}}</li>
+      <br>
+      <li v-for="name in names" v-text="name"></li>
+    </ul>
+
+    <input type="text" v-model="newName">
+    <button @click="addName">Add Name</button>
+    <br><br>
+    <button :title="title">Hover over me</button>
+    <br><br>
+    <button :class="{ 'is-loading': isLoading }" @click="toggleClass">Toggle Me</button>
+    <br><br>
+    <h1>{{reversedHelloWorld}}</h1>
+    <br><br>
+    <h1>All Tasks</h1>
+    <ul>
+      <task v-for="task in tasks" v-text="task.description"></task>
+    </ul>
+
+    <br><br>
+    <h1>Completed Tasks</h1>
+    <ul>
+      <task v-for="task in completedTasks">
+        {{task.description}}
+        <button @click="modifyTasks({task})">Set to Uncomplete</button>
+      </task>
+    </ul>
+
+    <br><br>
+    <h1>InComplete Tasks</h1>
+    <ul>
+      <task v-for="task in incompleteTasks">
+        {{task.description}}
+        <button @click="modifyTasks({task})">Set to Complete</button>
+      </task>
+    </ul>  
+  </div>
+	
+	<script src="https://unpkg.com/vue@2.5.17/dist/vue.js">
+	</script>
+  <script src="vue.js"></script>
+  
+</body>
+
+</html>
